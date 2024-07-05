@@ -9,13 +9,13 @@ Two games where developed using Vanilla js. And backend using Django 3.2.
 # Demo
 
 ## Game 1 part 1
-<img src='Readme/demo_game_1.gif'/>
+<img src='readme/demo_game_1.gif'/>
 
 ## Game 1 part 2
-<img src='Readme/demo_game2.gif'/>
+<img src='readme/demo_game2.gif'/>
 
 ## Game 3
-<img src='Readme/demo_game3.gif'/>
+<img src='readme/demo_game3.gif'/>
 
 # Test it yourself
 
