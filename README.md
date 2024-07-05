@@ -6,7 +6,7 @@ Two games where developed using Vanilla js. And backend using Django 3.2.
 
 [More info](Report/Development%20of%20a%20cognitive%20rehabilitation%20Web%20application%20for%20post-stroke%20patients.pdf)
 
-[Test it yourself](#-Test-it-yourself)
+[Test it yourself](#test-it-yourself)
 # Demo
 
 ## Game 1 part 1
