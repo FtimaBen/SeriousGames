@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+{% csrf_token %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static "patient/bee_game/css/bee_game.css" %}">
+        <title>bee game</title>
+        <meta charset="UTF-8">
+        <script src="{% static "patient/common_files/js/send_JSON.js" %}"></script>
+        <script src="{% static "patient/common_files/js/common_functions.js" %}"></script>
+        <script src="{% static "patient/bee_game/js/game.js" %}"></script>
+        <script src="{% static "patient/bee_game/js/game_1.js" %}"></script>
+        <script src="{% static "patient/bee_game/js/game2.js" %}"></script>
+    </head>
+    <body>
+        <div id="menu"> 
+            <h1>Welcome</h1>
+            <button>
+                Click to start </button>
+            <span id="or">or</span>
+            <span id="wait" style="background-color: white;"> 
+                wait for the game to start automatically ... in 10 <br>
+            </span>
+        </div> 
+        <div id='fullScreen'>
+            <canvas id="canvas_game1"></canvas> 
+            <canvas id="canvas_game2"></canvas> 
+        </div>
+        <a href="/logout" title="keep mouse on for seconds to logout" 
+        onmouseover="logout(this)" onmouseout="removeTimer(this)">Logout</a>
+    
+    </body>
+
+</html>
+<style>
+    #canvas_game2 { display: none; }
+    #menu {
+        position: absolute;
+        z-index: +1;
+        display: grid;
+        align-content: center;
+        grid-gap: 20px;
+        grid-template-rows: min-content min-content min-content min-content;
+        place-items: center;
+        width: inherit;
+        height: inherit;
+        background-color: rgba(255, 255, 255, .15);  
+        backdrop-filter: blur(5px);
+    }
+    #menu * {
+        padding: 20px;
+        width: max-content;
+    }
+    body {
+        cursor: default;
+    }
+    body button {
+        border: none;
+        background-color: black;
+        color: white;    
+        text-transform: uppercase;
+    }
+    body button:hover {
+        background-color: #383838;
+    }
+    a {
+        position: absolute;
+        z-index: +1;
+        bottom: 0px;
+        left: 0px;
+        padding: 20px;
+        background-color: black;
+        color: white;
+    }
+    a::before {
+        position: absolute;
+        content: "Logout";
+        background-color: yellow;
+        width: 0;
+        padding: inherit;   
+        padding-left: 0;
+        padding-right: 0;
+        bottom: inherit;
+        left: inherit;
+        color: yellow;
+        overflow: hidden;
+    }
+    a:hover::before {
+        color: black;
+        animation: logout 4s infinite;
+    } 
+
+    @keyframes logout{
+        0% {width: 0; padding-left: 0;}
+        25% {width: 0; padding-left: 20px;}
+        50% {width: calc(100% - 20px); padding-left: 20px;}
+        100% {width: 0; padding-left: 0;}   
+    }
+    
+</style>
+<script>
+    var json_data = {{ json_data|safe }}
+    var idTimer
+    function logout(value){idTimer=setTimeout(()=>window.location = value.href, 2000)}
+    function removeTimer(value){clearTimeout(idTimer)}
+</script>

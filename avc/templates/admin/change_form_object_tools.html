@@ -1,0 +1,25 @@
+{% load i18n admin_urls %}
+{% block object-tools-items %}
+<li>
+    {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+    {% if not 'patientscore' in request.get_full_path %}
+        <a href="{% add_preserved_filters history_url %}" class="historylink">{% translate "History" %}</a>
+    {% else %}
+    <div id="toolbar"><form id="changelist-search" method="get">
+        <div><!-- DIV needed for valid HTML -->
+            {% load static %}
+            <label for="searchbar"><img src="{% static "admin/img/search.svg" %}" alt="Search"></label>
+            <input type="text" size="40" name="{{ search_var }}" id="searchbar" 
+                autofocus style='width: fit-content;' placeholder='Search for a word, a number or a date ...'>
+            <button class='button' style='padding: 7px' id='score_search_button' type='button'>Search</button>   
+            <br>
+        </div>
+    </div>
+    <div id='search_result'>
+        <span hidden></span> 
+    </div>
+    {% endif %}
+</li>
+{% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% translate "View on site" %}</a></li>{% endif %}
+{% endblock %}
+

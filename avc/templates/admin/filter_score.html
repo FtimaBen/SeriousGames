@@ -1,0 +1,18 @@
+<div class='filtering'>
+    {% for key, value in context.items %}
+    <div class='filter_type'>
+        <span class='button_' type='button' onclick='filtering(this)'> {{ key }} </span>
+        <div class='checkboxes'>
+            {% for value_ in value %}
+            <div>
+                <input type='checkbox' value='{{ value_ }}'>&nbsp&nbsp&nbsp <span>{{ value_ }}</span>
+            </div>
+            {% endfor %}
+            <div style='justify-content: center; padding: 5px' onclick='empty(this)'>
+                <span>empty</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <br>
+</div>

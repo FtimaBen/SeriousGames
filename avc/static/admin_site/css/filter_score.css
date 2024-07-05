@@ -1,0 +1,45 @@
+.checkboxes {
+    position: absolute;
+    display: none;
+    background-color: var(--button-hover-bg);
+    width: inherit;
+    grid-template-rows: max-content max-content;
+    color: white;
+    margin-top: 35px; 
+    border-bottom: 5px solid white;
+    border-radius: 4px;
+    z-index: +22;
+}
+
+.filter_type {
+    display: grid;
+    grid-template-columns: max-content;
+}
+
+.filtering { 
+    display: flex; 
+    justify-content: space-around;
+    align-content: center;
+}
+
+.checkboxes div {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: left;
+    padding: 20px;
+}
+
+.checkboxes div:hover { background-color: rgb(3, 88, 114); }
+.display-list { display: grid; }
+.button_background, .button_:hover { 
+    background-color: var(--button-hover-bg) !important ;
+    color: white !important;
+}
+
+.button_ {
+    padding: 0 20px 0;
+    color:rgb(3, 88, 114);
+    cursor: pointer;
+}
+
+span { user-select: none; }

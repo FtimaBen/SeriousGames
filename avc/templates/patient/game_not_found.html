@@ -1,0 +1,25 @@
+<html>
+    <div>
+        <h1>Game not found</h1>
+        <a href='/logout' onmouseover="logout()">Logout</a>
+    </div>
+</html>
+<script> 
+    window.onload = () => {
+        if (location.href.includes('bee_game')) location.href = 'bell_game'
+    }
+    function logout() {
+        location.href = "/logout"
+    }
+</script>
+<style>
+    a { text-decoration: none; }
+    div {
+        display: grid;
+        grid-auto-flow: fit-content;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        height: 100%;
+    }
+</style>

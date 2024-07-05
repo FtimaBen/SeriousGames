@@ -1,0 +1,17 @@
+{% extends "admin/login.html" %}
+{% block content %}
+    <script>
+        window.onload = function () {
+            let clickToHover = document.querySelectorAll('#id_password, #id_username')
+            let sub_button = document.querySelector('input[type="submit"]') 
+
+            clickToHover.forEach(focusEvent)
+            function focusEvent(value) {
+                value.onmouseover = ()=>value.focus()
+            }
+            sub_button.onmouseover = ()=>sub_button.click()
+        }
+    </script>
+    {{ block.super }}
+{% endblock  %}
+

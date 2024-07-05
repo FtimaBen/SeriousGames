@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+{% csrf_token %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static "patient/bee_game/css/bee_game.css" %}">
+        <title>bell game</title>
+        <meta charset="UTF-8">
+        <script src="{% static "patient/common_files/js/send_JSON.js" %}"></script>
+        <script src="{% static "patient/common_files/js/common_functions.js" %}"></script>
+        <script src="{% static "patient/bell_game/js/game3.js" %}"></script>
+    </head>
+    <body>
+        <div id="howToPlay"> 
+            <h1 background-color=black>How To play ?</h1>
+            <image src="{% static "patient/bell_game/image/howToPlay.gif" %}" id="img_htp"></image>
+            <span id="wait" style="background-color: white; padding: 10px;"> 
+                wait for the game to start in ... 10 <br>
+            </span>
+        </div> 
+        <canvas id="canvas_game2"></canvas>
+        <a href="/logout" title="keep mouse on for seconds to logout" 
+        onmouseover="logout(this)" onmouseout="removeTimer(this)" id='logout'>Logout</a>
+        <div id="gameended">
+            <h3>Thanks for playing</h3>
+            <a href="/logout" title="keep mouse on for seconds to logout" 
+            onmouseover="logout(this)" onmouseout="removeTimer(this)">Logout</a>
+        </div>
+    </body>
+
+</html>
+<style>
+    
+
+    body { cursor: default; }
+
+    #howToPlay, #gameended{
+        position: absolute;
+        z-index: +1;
+        display: grid;
+        align-content: center;
+        grid-gap: 20px;
+        grid-template-rows: min-content min-content min-content min-content;
+        place-items: center;
+        width: inherit;
+        height: inherit;
+        background-color: white;  
+        backdrop-filter: blur(5px);
+    }
+    #gameended { display: none; }
+    #howToplay * {
+        width: max-content;
+    }
+    #img_htp{
+        width: 50%;
+        border: solid;
+        border-width: thick;
+    }
+    #logout {
+        position: absolute;
+        z-index: +1;
+        bottom: 0px;
+        left: 0px;
+        padding: 20px;
+        background-color: black;
+        color: white;
+    }
+    #logout::before {
+        position: absolute;
+        content: "Logout";
+        background-color: yellow;
+        width: 0;
+        padding: inherit;   
+        padding-left: 0;
+        padding-right: 0;
+        bottom: inherit;
+        left: inherit;
+        color: yellow;
+        overflow: hidden;
+    }
+    #logout:hover::before {
+        color: black;
+        animation: logout 4s infinite;
+    } 
+
+    @keyframes logout{
+        0% {width: 0; padding-left: 0;}
+        25% {width: 0; padding-left: 20px;}
+        50% {width: calc(100% - 20px); padding-left: 20px;}
+        100% {width: 0; padding-left: 0;}   
+    }
+    
+</style>
+
+<script>
+    var json_data = {{ json_data|safe }}
+
+    let idTimer;
+    function logout(value){idTimer=setTimeout(()=>window.location = value.href, 1900)}
+    function removeTimer(value){clearTimeout(idTimer)}
+</script>
